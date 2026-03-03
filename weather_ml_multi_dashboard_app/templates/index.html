@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Weather ML Dashboard</title>
+</head>
+<body>
+    <h2>🔥 Advanced Weather ML Dashboard</h2>
+    
+    <form method="POST">
+        Enter City Name:<br><br>
+        <input type="text" name="city" required><br><br>
+        <button type="submit">Analyze Weather</button>
+    </form>
+    
+    {% if temp_pred %}
+        <h3>Predicted Next Temperature: {{ temp_pred }} °C</h3>
+        <img src="{{ charts['temp'] }}" width="500"><br><br>
+        
+        <h3>Predicted Next Humidity: {{ humidity_pred }} %</h3>
+        <img src="{{ charts['humidity'] }}" width="500"><br><br>
+        
+        <h3>Predicted Next Wind Speed: {{ wind_pred }} m/s</h3>
+        <img src="{{ charts['wind'] }}" width="500"><br><br>
+    {% endif %}
+    
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
